@@ -63,20 +63,27 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Medical code colors
+				// Company color scheme
+				company: {
+					primary: '#2f6c9d',
+					secondary: '#38a883',
+					tertiary: '#efe6dd',
+				},
+				// Medical code colors updated with company colors
 				icd: {
-					DEFAULT: '#3B82F6', // Blue for ICD
-					light: '#93C5FD',
-					dark: '#1E40AF'
+					DEFAULT: '#2f6c9d', // Company primary
+					light: '#a3c0dc',
+					dark: '#224e70'
 				},
 				cpt: {
-					DEFAULT: '#F97316', // Orange for CPT
-					light: '#FDBA74',
-					dark: '#C2410C'
+					DEFAULT: '#38a883', // Company secondary
+					light: '#a3e0cd',
+					dark: '#297a5f'
 				},
 				match: {
-					DEFAULT: '#10B981', // Green for matches
-					light: '#6EE7B7'
+					DEFAULT: '#38a883', // Company secondary
+					light: '#a3e0cd',
+					highlight: '#ff6b6b' // Highlight color for hover effect
 				}
 			},
 			borderRadius: {
@@ -108,13 +115,25 @@ export default {
 				'draw-line': {
 					'0%': { 'stroke-dashoffset': '1000' },
 					'100%': { 'stroke-dashoffset': '0' }
+				},
+				'pulse-line': {
+					'0%': { 'stroke-width': '2' },
+					'50%': { 'stroke-width': '4' },
+					'100%': { 'stroke-width': '2' }
+				},
+				'highlight-line': {
+					'0%': { stroke: '#38a883' },
+					'50%': { stroke: '#ff6b6b' },
+					'100%': { stroke: '#38a883' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
-				'draw-line': 'draw-line 1s ease-in-out forwards'
+				'draw-line': 'draw-line 1s ease-in-out forwards',
+				'pulse-line': 'pulse-line 1s ease-in-out',
+				'highlight-line': 'highlight-line 1s ease-in-out'
 			}
 		}
 	},
