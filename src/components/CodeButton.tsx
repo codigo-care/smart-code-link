@@ -24,20 +24,25 @@ const CodeButton: React.FC<CodeButtonProps> = ({
     cpt: "bg-cpt hover:bg-cpt-dark border border-cpt-light"
   };
 
+  // Different match indicator colors based on code type
+  const matchRingColor = type === 'cpt' 
+    ? "ring-icd" // Use primary blue for CPT matches
+    : "ring-match"; // Keep green for ICD matches
+
   return (
     <div 
       id={id}
       className={cn(
         baseStyles,
         typeStyles[type],
-        isMatched ? "ring-2 ring-match ring-offset-1" : "",
+        isMatched ? `ring-2 ${matchRingColor} ring-offset-1` : "",
         "relative inline-flex items-center justify-center",
         className
       )}
     >
       <span>{code}</span>
       {isMatched && (
-        <span className="absolute -top-1 -right-1 h-3 w-3 bg-match rounded-full animate-fade-in" />
+        <span className={`absolute -top-1 -right-1 h-3 w-3 ${type === 'cpt' ? 'bg-icd' : 'bg-match'} rounded-full animate-fade-in`} />
       )}
     </div>
   );
