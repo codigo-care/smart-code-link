@@ -21,11 +21,11 @@ const CodeColumn: React.FC<CodeColumnProps> = ({
   return (
     <div className={className}>
       <div className="text-gray-500 mb-2 text-sm">{title}</div>
-      <div className="space-y-3">
+      <div className="space-y-5">
         {codes.map((codeData) => (
           <div 
             key={codeData.id} 
-            className="flex items-center"
+            className="flex items-start"
             onMouseEnter={() => onCodeHover?.(codeData.id, true)}
             onMouseLeave={() => onCodeHover?.(codeData.id, false)}
           >
@@ -34,6 +34,7 @@ const CodeColumn: React.FC<CodeColumnProps> = ({
               type={codeType} 
               isMatched={codeData.matched}
               id={codeData.id}
+              description={codeData.description}
             />
           </div>
         ))}

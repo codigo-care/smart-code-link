@@ -8,6 +8,7 @@ interface CodeButtonProps {
   className?: string;
   isMatched?: boolean;
   id?: string;
+  description?: string;
 }
 
 const CodeButton: React.FC<CodeButtonProps> = ({ 
@@ -15,7 +16,8 @@ const CodeButton: React.FC<CodeButtonProps> = ({
   type, 
   className,
   isMatched = false,
-  id
+  id,
+  description
 }) => {
   const baseStyles = "px-3 py-2 rounded-md text-white font-medium text-sm transition-all duration-300 shadow-sm";
   
@@ -30,19 +32,26 @@ const CodeButton: React.FC<CodeButtonProps> = ({
     : "ring-match"; // Keep green for ICD matches
 
   return (
-    <div 
-      id={id}
-      className={cn(
-        baseStyles,
-        typeStyles[type],
-        isMatched ? `ring-2 ${matchRingColor} ring-offset-1` : "",
-        "relative inline-flex items-center justify-center",
-        className
-      )}
-    >
-      <span>{code}</span>
-      {isMatched && (
-        <span className={`absolute -top-1 -right-1 h-3 w-3 ${type === 'cpt' ? 'bg-icd' : 'bg-match'} rounded-full animate-fade-in`} />
+    <div className="flex flex-col">
+      <div 
+        id={id}
+        className={cn(
+          baseStyles,
+          typeStyles[type],
+          isMatched ? `ring-2 ${matchRingColor} ring-offset-1` : "",
+          "relative inline-flex items-center justify-center",
+          className
+        )}
+      >
+        <span>{code}</span>
+        {isMatched && (
+          <span className={`absolute -top-1 -right-1 h-3 w-3 ${type === 'cpt' ? 'bg-icd' : 'bg-match'} rounded-full animate-fade-in`} />
+        )}
+      </div>
+      {description && (
+        <div className={`text-xs mt-1 max-w-[200px] text-gray-600 italic ${type === 'cpt' ? 'text-right' : 'text-left'}`}>
+          {description}
+        </div>
       )}
     </div>
   );
