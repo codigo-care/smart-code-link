@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,21 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Medical code colors
+				icd: {
+					DEFAULT: '#3B82F6', // Blue for ICD
+					light: '#93C5FD',
+					dark: '#1E40AF'
+				},
+				cpt: {
+					DEFAULT: '#F97316', // Orange for CPT
+					light: '#FDBA74',
+					dark: '#C2410C'
+				},
+				match: {
+					DEFAULT: '#10B981', // Green for matches
+					light: '#6EE7B7'
 				}
 			},
 			borderRadius: {
@@ -84,11 +100,21 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'draw-line': {
+					'0%': { 'stroke-dashoffset': '1000' },
+					'100%': { 'stroke-dashoffset': '0' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.6s ease-out',
+				'draw-line': 'draw-line 1s ease-in-out forwards'
 			}
 		}
 	},
